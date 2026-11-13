@@ -4,7 +4,7 @@ import logo from "../assets/mediqueue-logo.png";
 
 function Navbar() {
     return (
-        <header>
+        <header >
             <nav>
                 <div className="logo">
                     <Link to="/">
