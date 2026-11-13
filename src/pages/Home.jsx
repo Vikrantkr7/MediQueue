@@ -110,9 +110,14 @@ function Home() {
                         <p>
                            Check live OPD doctors availability across hospitals, book your appointment instantly online, and monitor live OPD queue token status in real time.
                         </p>
-                        
-                        <button>Find Hospitals</button>
-                       
+                        <form className="hospital-search">
+                            <input
+                                type="text"
+                                placeholder="Find hospitals by name or location..."
+                            />
+
+                            <button type="submit" className="find-hospitals-button">Find Hospitals</button>
+                        </form>
                         
                     </div>
 
