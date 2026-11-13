@@ -7,7 +7,7 @@ import heroImage from "../assets/hero-doctor.jpg";
 const steps =[
     {   step: "1.",
         title: "Search & Check Availability",
-        description: "Browse local hospitals and see which doctors are currently active and available.",
+        description: "Browse hospitals and see which doctors are currently active and available.",
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8" />
@@ -131,7 +131,7 @@ function Home() {
                 <h2>How it Works</h2>
 
                 <p className="section-subtitle">
-                    Getting medical care shouldn't require endless<br/>
+                    Getting medical care shouldn't require endless waiting<br/>
                     Here is how we make it simple.
                 </p>
 
