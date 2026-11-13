@@ -1,10 +1,17 @@
-header {
+.navbar-header {
     position: sticky;
     top: 0;
     z-index: 1000;
 
     background-color: #FFFFFF;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 50px;
 }
 
 .logo {
@@ -17,7 +24,6 @@ header {
     color: #1E40AF;
     margin: 0;
     font-size: 20px;
-
 }
 
 .logo-queue {
@@ -30,7 +36,19 @@ header {
     width: 55px;
     height: 55px;
     object-fit: contain;
-    margin-right: 0;
+}
+
+/* Navigation menu */
+
+.nav-menu {
+display: flex;
+align-items: center;
+gap: 25px;
+}
+
+.nav-links {
+display: flex;
+gap: 25px;
 }
 
 .nav-links a {
@@ -43,28 +61,115 @@ header {
     color: #0D9488;
 }
 
-.nav-button button {
+.nav-button a {
+    display: inline-block;
     background-color: #0D9488;
     color: #FFFFFF;
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
-.nav-button button:hover {
+.nav-button a:hover {
     background-color: #0F766E;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
+.login-button a {
+  display: inline-block;
+    background-color: #FFFFFF;
+    color: #1E40AF;
+    border: 1px solid #1E40AF;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
+.login-button a:hover {
+    background-color: #1E40AF;
+    color: #FFFFFF;
+    border-color: #1E40AF;
 }
+
+.signup-button a {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color:  #0D9488;
+    border: 1px solid #0D9488;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.signup-button a:hover {
+    background-color: #0D9488;
+    color: #FFFFFF;
+    border-color: #0D9488;
+}
+
+/* Hamburger button */
+
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #1E40AF;
+}
+
+/* Responsive Navbar */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 12px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-button a {
+        display: block;
+        text-align: center;
+    }
+
+    .login-button a,
+    .signup-button a {
+    display: block;
+    text-align: center;
+}
+}
+
