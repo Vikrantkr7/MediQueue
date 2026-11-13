@@ -10,25 +10,22 @@ function App() {
  
 
   return (
-    <>
+    
       <BrowserRouter>
-
-        <Navbar/>
+        <div className="app-layout">
+          <Navbar/>
         
+        <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/doctors" element={<Doctors />} />
-          
         </Routes>
+        </div>
 
-        <Footer/>
 
-        
+          <Footer/>
+        </div>
      </BrowserRouter>
-
-     
-    </>
-      
   );
 }
 
