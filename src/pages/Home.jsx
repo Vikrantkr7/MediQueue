@@ -1,8 +1,7 @@
-// import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
 import heroImage from "../assets/hero-doctor.jpg";
-
 
 const steps =[
     {   step: "1.",
@@ -97,8 +96,7 @@ const features = [
 
 
 function Home() {
-
-
+const navigate = useNavigate();
     return (
         <main className="home-page">
            <div className="hero-section">
@@ -116,7 +114,12 @@ function Home() {
                                 placeholder="Find hospitals by name or location..."
                             />
 
-                            <button type="submit" className="find-hospitals-button">Find Hospitals</button>
+                            <button  
+                                type="button"
+                                onClick={() => navigate("/hospitals")} 
+                                className="find-hospitals-button">
+                                    Find Hospitals
+                            </button>
                         </form>
                         
                     </div>
