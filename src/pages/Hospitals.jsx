@@ -1,5 +1,7 @@
 import FilterDropdown from "../components/FilterDropdown";
 import "./Hospitals.css";
+import hospitals from "../data/hospitals.js";
+import hospitalImage from "../assets/hospital-hero-image.png";
 
 
 const hospitalStats = [
@@ -75,84 +77,163 @@ function Hospitals() {
     return (
         <main className="hospital-main">
 
-            {/* Page Header */}
             <header className="hospital-header">
-                <h1>
-                    Find <span>Hospitals</span> Near You
-                </h1>
 
-                <p>Explore top hospitals, check available specialities, 
-                    and find the right care for your needs.
-                </p>
+                {/* Hero Section */}
+                <section className="hospital-hero">
 
-                {/* Hospital Statistics */}
-                <div className="hospital-stats">
-                    {hospitalStats.map((item) => (
-                        <div className="hospital-stat-card" key={item.description}>
-                            <span className="hospital-stat-icon" >
-                                {item.icon}
-                            </span>
-                            <h3>{item.number}</h3>
-                            <p>{item.description}</p>
+                    {/* Left Content */}
+                    <div className="hospital-hero-content">
+
+                        <h1>
+                            Find <span>Hospitals</span> Near You
+                        </h1>
+
+                        <p>
+                        Explore top hospitals, check available specialities,
+                        and find the right care for your needs.
+                        </p>
+
+                        {/* Hospital Statistics */}
+                        <div className="hospital-stats">
+
+                            {hospitalStats.map((item) => (
+                                <div className="hospital-stat-card" key={item.description}>
+
+                                    <span className="hospital-stat-icon">
+                                        {item.icon}
+                                    </span>
+
+                                    <div>
+                                        <h3>{item.number}</h3>
+                                        <p>{item.description}</p>
+                                    </div>
+
+                                </div>
+                            ))}
 
                         </div>
-                    ))}
-                </div>
+
+                    </div>
+
+                    {/* Right Image */}
+                    <div className="hospital-hero-image">
+                        <img
+                            src={hospitalImage}
+                            alt="Modern hospital building"
+                        />
+                    </div>
+
+                </section>
 
 
                 {/* Hospital Search Section */}
                 <section className="hospital-search-section">
 
-                        <form className="hospital-search-form">
+                    <form className="hospital-search-form">
 
-                            <input
-                                type="text"
-                                placeholder="Find hospitals by name or location..."
+                        <input
+                            type="text"
+                            placeholder="Search hospitals by name or location..."
+                        />
+
+                        <div className="hospital-filter">
+
+                            <FilterDropdown
+                                name="location"
+                                defaultOption="All Locations"
+                                options={locations}
                             />
 
-                             {/* Location Dropdown */}
+                            <FilterDropdown
+                                name="speciality"
+                                defaultOption="All Specialities"
+                                options={specialities}
+                            />
 
-                            <div className="hospital-filter">
-                              
-                            
-                                {/* <select name="location" defaultValue="">
-                                    <option value="">All Locations</option>
+                            <FilterDropdown
+                                name="hospitalType"
+                                defaultOption="All Types"
+                                options={hospitalTypes}
+                            />
 
-                                    {locations.map((location) => (
-                                        <option key={location} value={location}>
-                                            {location}
-                                        </option>
-                                    ))}
-                                </select> */}
+                        </div>
 
-                                <FilterDropdown
-                                    name="location"
-                                    defaultOption="All Locations"
-                                    options={locations}
-                                />
+                        <button type="submit" className="find-hospitals-button">
+                            Find Hospitals
+                        </button>
 
-                                <FilterDropdown
-                                    name="speciality"
-                                    defaultOption="All Specialities"
-                                    options={specialities}
-                                />
+                    </form>
 
-                                <FilterDropdown
-                                    name="hospitalType"
-                                    defaultOption="All Types"
-                                    options={hospitalTypes}
-                                />
+                </section>
+
+            </header>
+
+            {/* Hospital Listings */}
+
+            <section className="hospital-data-section">
+
+                {/* Section Heading */}
+
+                <div className="hospital-data-header">
+                    <h1>Hospitals in Your Area</h1>
+                    <p>Showing {hospitals.length} Hospitals.</p>
+                </div>
+                
+
+                {/* Hospital Cards */}
+                <div className="hospital-data">
+                    {hospitals.map((item) => (
+                        <div className="hospital-data-card" key={item.id}>
+
+
+                            {/* Hospital Image and Type */}
+                            <div className="hospital-card-image">
+                                <img src={item.image} alt={item.name} />
+                                
                             </div>
 
-                            <button type="submit" className="find-hospitals-button">
-                                Find Hospitals
-                            </button>
+                            {/* Hospital Information */}
+                            <div className="hospital-card-content">
+                                {/* Name and Type */}
+                                <div className="hospital-card-heading">
 
-                        </form>
+                                    <h2>{item.name}</h2>
+                                    <span className="hospital-type">{item.type}</span>
+                                </div>
 
-                       
-                </section>
-            </header>
+                                {/* Location */}
+                                <span className="hospital-location-icon" >
+                                    📍 {item.location}
+                                </span>
+
+                                {/* Specialities */}
+                                <div className="hospital-specialities">
+                                    {item.specialities.map((speciality) => (
+                                        <span key={speciality}>{speciality}</span>
+                                    ))}
+                                </div>
+
+                                {/* Rating and Button */}
+                                <div className="hospital-card-footer">
+                                    <span className="doctor-count">
+                                        👨‍⚕️  {item.doctor} Doctors
+                                    </span>
+                                    
+                                    <span className="hospital-rating-icon" >
+                                        ⭐ {item.rating}
+                                    </span>
+
+                                    <button>View Hospital</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+
+            </section>
         </main>
     );
 }
