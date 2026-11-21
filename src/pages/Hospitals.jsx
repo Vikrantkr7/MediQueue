@@ -2,6 +2,7 @@ import FilterDropdown from "../components/FilterDropdown";
 import "./Hospitals.css";
 import hospitals from "../data/hospitals.js";
 import hospitalImage from "../assets/hospital-hero-image.png";
+import { useNavigate } from "react-router-dom";
 
 
 const hospitalStats = [
@@ -74,6 +75,8 @@ const hospitalTypes = [
 
 
 function Hospitals() {
+    const navigate = useNavigate();
+
     return (
         <main className="hospital-main">
 
@@ -224,7 +227,10 @@ function Hospitals() {
                                         ⭐ {item.rating}
                                     </span>
 
-                                    <button>View Hospital</button>
+                                    <button onClick={() => navigate(`/hospitals/${item.id}`)}>
+                                        View Hospital
+
+                                    </button>
                                 </div>
 
                             </div>
@@ -237,6 +243,8 @@ function Hospitals() {
         </main>
     );
 }
+
+
 
 
 export default Hospitals;

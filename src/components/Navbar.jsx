@@ -34,7 +34,7 @@ function closeMenu() {
 
                     <div className="nav-links">
                         <Link to="/" onClick={closeMenu}>Home</Link>
-                        <Link to="/doctors" onClick={closeMenu}>Find a Doctor</Link>
+                        <Link to="/hospitals" onClick={closeMenu}>Hospitals Near You</Link>
                         <Link to="/services" onClick={closeMenu}>Services</Link>
                         <Link to="/about" onClick={closeMenu}>About Us</Link>
                         <Link to="/contact" onClick={closeMenu}>Contact</Link>
