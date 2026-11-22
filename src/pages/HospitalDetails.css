@@ -260,89 +260,77 @@
 }
 
 /* Specialities Section */
-
 .specialities-section {
-    margin-top: 25px;
-    padding: 24px;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+    margin-top: 32px;
 }
 
-.specialities-section h3 {
-    margin: 0 0 20px;
-    color: #1e293b;
-    font-size: 20px;
+.specialities-title {
+    font-size: 22px;
     font-weight: 700;
+    margin-bottom: 18px;
+    color: #172554;
 }
-
 
 /* Specialities Grid */
-
-.specialities-available {
+.specialities-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
-
 /* Individual Speciality Card */
-
 .speciality-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    min-height: 110px;
-    padding: 15px;
-    background-color: #f0fdfa;
-    border: 1px solid #ccfbf1;
+
+    min-height: 105px;
+    padding: 15px 8px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
-    color: #334155;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    transition: all 0.25s ease;
 }
 
-.speciality-card svg {
-    width: 28px;
-    height: 28px;
-    color: #0d9488;
-    flex-shrink: 0;
+.speciality-icon {
+    width: 32px;
+    height: 32px;
+    color: #168f91;
+    stroke-width: 1.7;
+}
+
+.speciality-name {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #1e293b;
 }
 
 .speciality-card:hover {
+    border-color: #168f91;
+    background: #f0fdfa;
     transform: translateY(-3px);
-    box-shadow: 0 5px 12px rgba(13, 148, 136, 0.10);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .specialities-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .specialities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 
-/* Responsive Design */
-
-@media (max-width: 600px) {
-
-    .specialities-section {
-        padding: 18px;
-    }
-
-    .specialities-section h3 {
-        font-size: 18px;
-    }
-
-    .specialities-available {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .speciality-card {
-        min-height: 100px;
-        font-size: 13px;
-    }
-
-}
 
 /* Hospital Details Layout */
 
@@ -689,5 +677,219 @@
 
     .hospital-info-content {
         gap: 15px;
+    }
+}
+
+
+   /* Doctors Section */
+
+
+.doctors-section {
+    margin-top: 35px;
+}
+
+.doctors-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.doctors-header h2 {
+    font-size: 22px;
+    color: #172554;
+    font-weight: 700;
+}
+
+.doctors-header span {
+    font-size: 14px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 7px 12px;
+    border-radius: 20px;
+}
+
+/* Doctors List */
+
+.doctors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Individual Doctor Card */
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px;
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+
+    transition: all 0.25s ease;
+}
+
+.doctor-card:hover {
+    border-color: #168f91;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+    transform: translateY(-2px);
+}
+
+/* Doctor Information */
+
+.doctor-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 75px;
+    height: 75px;
+    background: #f0fdfa;
+    color: #0f8b8d;
+    border: 1px solid #ccfbf1;
+    border-radius: 12px;
+}
+
+.doctor-avatar svg {
+    width: 38px;
+    height: 38px;
+    stroke-width: 1.5;
+}
+.doctor-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.doctor-name {
+    font-size: 18px;
+    font-weight: 650;
+    color: #172554;
+    margin-bottom: 9px;
+}
+
+.doctor-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    font-size: 13px;
+    color: #0f8b8d;
+    font-weight: 500;
+
+    margin-bottom: 9px;
+}
+
+.meta-dot {
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.doctor-qualification {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* Consultation Fee */
+
+.doctor-fee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    padding: 12px 18px;
+    background: #f0fdfa;
+    border-radius: 10px;
+    min-width: 125px;
+}
+
+.fee-amount {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f766e;
+}
+
+.fee-label {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* View Details Button */
+
+.doctor-details-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 10px 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0f8b8d;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+
+.doctor-details-btn:hover {
+    background: #0d7375;
+}
+
+/* Empty State */
+
+.no-doctors {
+    padding: 25px;
+    text-align: center;
+    color: #64748b;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 650px) {
+
+    .doctors-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .doctor-card {
+        flex-wrap: wrap;
+        padding: 17px;
+        gap: 15px;
+    }
+
+    .doctor-info {
+        flex-basis: 100%;
+    }
+
+    .doctor-fee {
+        align-items: flex-start;
+        min-width: auto;
+        padding: 10px 13px;
+    }
+
+    .doctor-details-btn {
+        margin-left: auto;
     }
 }

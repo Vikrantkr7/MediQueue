@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import "./HospitalDetails.css";
 import LiveOPDQueue from "../components/LiveOPDQueue";
 import locationMap from "../assets/hospitals/location-map.png";
+import doctors from "../data/doctors.js";
 
 import {
     BedDouble,
@@ -26,7 +27,9 @@ import {
     Calendar,
     CalendarX,
     Phone,
-    Info
+    Info,
+    IndianRupee,
+    UserRound
 } from "lucide-react";
 
 const specialityIcons = {
@@ -51,6 +54,10 @@ function HospitalDetails() {
     const selectedHospital = hospitals.find(
         (item) => item.id === Number(id)
     );
+
+   const hospitalDoctors = doctors.filter(
+    (item) => item.hospitalId === selectedHospital.id
+);
 
 
     return (
@@ -145,21 +152,23 @@ function HospitalDetails() {
                     {/* Specialities Section */}
                     <section className="specialities-section">
 
-                        <h3>Specialities Available</h3>
+                        <h2 className="specialities-title">Specialities Available</h2>
 
-                        <div className="specialities-available">
+                        <div className="specialities-grid">
 
                             {selectedHospital.specialities.map((speciality) => {
 
                                 const Icon = specialityIcons[speciality];
 
                                 return (
-                                    <div
-                                        className="speciality-card"
-                                        key={speciality}
-                                    >
-                                        <Icon />
-                                        <span>{speciality}</span>
+                                    <div className="speciality-card" key={speciality}>
+
+                                        <Icon className="speciality-icon" />
+
+                                        <span className="speciality-name">
+                                            {speciality}
+                                        </span>
+
                                     </div>
                                 );
 
@@ -170,13 +179,82 @@ function HospitalDetails() {
                     </section>
 
 
-                    {/* Doctors Section - To Be Built */}
+                    {/* Doctors Section */}
                     <section className="doctors-section">
-                        {/* Doctors at this hospital */}
+                          
+                        {/* Section Heading */} 
+                        <div className="doctors-header">
+                            <h2>Doctors at {selectedHospital.name}</h2>
+                            <span>Showing {hospitalDoctors.length} doctors</span>
+                        </div>
+
+                        {/* Doctors List */}
+                        <div className="doctors-list">
+
+                                {hospitalDoctors.length > 0 ? (
+
+                                    hospitalDoctors.map((item) => (
+ 
+                                        <div className="doctor-card" key={item.id}>
+
+                                            <div className="doctor-avatar">
+                                                <UserRound />
+                                            </div>
+
+                                            {/* Doctor Information */}
+                                            <div className="doctor-info">
+
+                                                <h3 className="doctor-name">
+                                                    {item.name}
+                                                </h3>
+
+                                                <div className="doctor-meta">
+                                                    <span>{item.speciality}</span>
+                                                    <span className="meta-dot">•</span>
+                                                    <span>{item.experience} Years Experience</span>
+                                                </div>
+
+                                                <p className="doctor-qualification">
+                                                    {item.qualification}
+                                                </p>
+
+                                            </div>
+
+                                            {/* Consultation Fee */}
+                                            <div className="doctor-fee">
+                                                <span className="fee-amount">
+                                                    <IndianRupee size={16} />
+                                                    {item.consultationFee}
+                                                </span>
+
+                                                <span className="fee-label">
+                                                    Consultation Fee
+                                                </span>
+                                            </div>
+
+                                            {/* View Details */}
+                                            <button className="doctor-details-btn">
+                                                View Details
+                                                <ChevronRight size={16} />
+                                            </button>
+    
+                                        </div>
+
+                                    ))
+
+                                ) : (
+
+                                    <p className="no-doctors">
+                                        No doctors are currently available at this hospital.
+                                    </p>
+
+                                )}
+
+                            </div>
+
                     </section>
 
                 </div>
-
 
                 {/* RIGHT COLUMN */}
                 <aside className="hospital-details-right">
